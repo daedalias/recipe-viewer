@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background: #111827;
+    color: white;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+input[type="file"],
+input[type="search"] {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+input[type="search"] {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #374151;
+    background: #1f2937;
+    color: white;
+    font-size: 16px;
+}
+
+#recipeCount {
+    margin-bottom: 12px;
+    color: #9ca3af;
+}
+
+#recipeList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.recipeButton {
+    width: 100%;
+    text-align: left;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #1f2937;
+    color: white;
+}
+
+.recipeTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.recipeMeta {
+    margin-top: 4px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+#backButton {
+    margin-bottom: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+}
+
+#recipeDetail {
+    line-height: 1.6;
+}

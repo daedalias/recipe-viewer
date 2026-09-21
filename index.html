@@ -4,63 +4,63 @@
 
 <head>
 
-<meta
-    charset="utf-8">
+<meta charset="utf-8">
 
 <meta
     name="viewport"
     content="width=device-width, initial-scale=1">
 
 <title>
-    Recipe Viewer Test
+    Recipe Viewer
 </title>
 
-<style>
-
-body {
-    background: #663300;
-    color: white;
-    font-family: sans-serif;
-    padding: 20px;
-}
-
-button {
-    padding: 12px;
-    font-size: 18px;
-}
-
-</style>
+<link
+    rel="stylesheet"
+    href="style.css">
 
 </head>
 
 <body>
 
-<h1>
-    Recipe Viewer Test
-</h1>
+<div id="listView">
 
-<button id="testButton">
-    Test JavaScript
-</button>
+    <h1>
+        Recipe Viewer
+    </h1>
 
-<script>
+    <input
+        type="file"
+        id="filePicker"
+        accept=".json">
 
-document
-    .getElementById(
-        "testButton"
-    )
-    .addEventListener(
-        "click",
-        () => {
+    <input
+        type="search"
+        id="searchBar"
+        placeholder="Search Recipes">
 
-            alert(
-                "JavaScript Works"
-            );
+    <div id="recipeCount">
+        Recipes: 0
+    </div>
 
-        }
-    );
+    <div id="recipeList">
+    </div>
 
-</script>
+</div>
+
+<div
+    id="detailView"
+    style="display:none;">
+
+    <button id="backButton">
+        ← Back
+    </button>
+
+    <div id="recipeDetail">
+    </div>
+
+</div>
+
+<script src="app.js"></script>
 
 </body>
 
