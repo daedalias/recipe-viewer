@@ -20,7 +20,25 @@ const recipeList =
     document.getElementById(
         "recipeList"
     );
+const listView =
+    document.getElementById(
+        "listView"
+    );
 
+const detailView =
+    document.getElementById(
+        "detailView"
+    );
+
+const backButton =
+    document.getElementById(
+        "backButton"
+    );
+
+const recipeDetail =
+    document.getElementById(
+        "recipeDetail"
+    );
 let recipes = [];
 
 loadSavedLibrary();
@@ -49,7 +67,17 @@ filePicker.addEventListener(
         );
     }
 );
+backButton.addEventListener(
+    "click",
+    () => {
 
+        detailView.style.display =
+            "none";
+
+        listView.style.display =
+            "block";
+    }
+);
 searchBar.addEventListener(
     "input",
     () => {
@@ -142,9 +170,115 @@ function buildRecipeList(
                 </div>
                 `;
 
-            recipeList.appendChild(
-                button
-            );
+           button.addEventListener(
+    "click",
+    () => {
+
+        showRecipe(
+            recipe
+        );
+    }
+);
+
+recipeList.appendChild(
+    button
+);
         }
     );
+    
+}
+function showRecipe(
+    recipe
+) {
+
+    listView.style.display =
+        "none";
+
+    detailView.style.display =
+        "block";
+
+    let html =
+        `<h1>${recipe.title}</h1>`;
+
+    if (
+        recipe.category
+    ) {
+
+        html +=
+            `<div><strong>Category:</strong> ${recipe.category}</div>`;
+    }
+
+    if (
+        recipe.source
+    ) {
+
+        html +=
+            `<div><strong>Source:</strong> ${recipe.source}</div>`;
+    }
+
+    if (
+        recipe.servings
+    ) {
+
+        html +=
+            `<div><strong>Yield:</strong> ${recipe.servings}</div>`;
+    }
+
+    if (
+        recipe.duration
+    ) {
+
+        html +=
+            `<div><strong>Duration:</strong> ${recipe.duration}</div>`;
+    }
+
+    if (
+        recipe.tags?.length
+    ) {
+
+        html +=
+            `<div><strong>Tags:</strong> ${recipe.tags.join(", ")}</div>`;
+    }
+
+    html +=
+        `<h2>Ingredients</h2>`;
+
+    (
+        recipe.ingredients || []
+    )
+    .forEach(
+        ingredient => {
+
+            if (
+                ingredient.type ===
+                "section"
+            ) {
+
+                html +=
+                    `<h3>${ingredient.name}</h3>`;
+
+                return;
+            }
+
+            html +=
+                `<div>${ingredient.amount || ""} ${ingredient.name || ""}</div>`;
+        }
+    );
+
+    html +=
+        `<h2>Instructions</h2>`;
+
+    (
+        recipe.instructions || []
+    )
+    .forEach(
+        step => {
+
+            html +=
+                `<div>${step.stepNumber}. ${step.text}</div>`;
+        }
+    );
+
+    recipeDetail.innerHTML =
+        html;
 }
