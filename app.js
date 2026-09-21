@@ -37,7 +37,11 @@ filePicker.addEventListener(
         }
 
         const text =
-            await file.text();
+    await file.text();
+
+alert(
+    `File loaded: ${text.length} characters`
+);
 
         localStorage.setItem(
             STORAGE_KEY,
@@ -84,10 +88,17 @@ function loadLibraryFromText(
         JSON.parse(
             text
         );
+   alert(
+    `Recipes found: ${
+        backup.recipes?.length || 0
+    }`
+);
 
     recipes =
         backup.recipes || [];
-
+alert(
+    `Recipes array loaded`
+);
     buildRecipeList();
 }
 
