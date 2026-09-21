@@ -170,9 +170,13 @@ function buildRecipeList(
                 </div>
                 `;
 
-           button.addEventListener(
+          button.addEventListener(
     "click",
     () => {
+
+        alert(
+            recipe.title
+        );
 
         showRecipe(
             recipe
