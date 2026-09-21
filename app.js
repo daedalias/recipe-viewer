@@ -39,6 +39,25 @@ const recipeDetail =
     document.getElementById(
         "recipeDetail"
     );
+    const categoryFilter =
+    document.getElementById(
+        "categoryFilter"
+    );
+
+const tagFilter =
+    document.getElementById(
+        "tagFilter"
+    );
+
+const favoritesOnly =
+    document.getElementById(
+        "favoritesOnly"
+    );
+
+const clearFilters =
+    document.getElementById(
+        "clearFilters"
+    );
 let recipes = [];
 
 loadSavedLibrary();
@@ -87,7 +106,44 @@ searchBar.addEventListener(
         );
     }
 );
+categoryFilter.addEventListener(
+    "change",
+    refreshFilters
+);
 
+tagFilter.addEventListener(
+    "change",
+    refreshFilters
+);
+
+favoritesOnly.addEventListener(
+    "change",
+    refreshFilters
+);
+
+clearFilters.addEventListener(
+    "click",
+    () => {
+
+        searchBar.value = "";
+
+        categoryFilter.value = "";
+
+        tagFilter.value = "";
+
+        favoritesOnly.checked =
+            false;
+
+        refreshFilters();
+    }
+);
+
+function refreshFilters() {
+
+    buildRecipeList(
+        searchBar.value
+    );
+}
 function loadSavedLibrary() {
 
     const savedLibrary =
@@ -116,7 +172,91 @@ function loadLibraryFromText(
     recipes =
         backup.recipes || [];
 
-    buildRecipeList();
+buildCategoryFilter();
+buildTagFilter();
+buildRecipeList();
+}
+function buildCategoryFilter() {
+
+    categoryFilter.innerHTML =
+        `
+        <option value="">
+            All Categories
+        </option>
+        `;
+
+    const categories =
+        [...new Set(
+            recipes
+                .map(
+                    recipe =>
+                        recipe.category
+                )
+                .filter(
+                    category =>
+                        category
+                )
+        )]
+        .sort();
+
+    categories.forEach(
+        category => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                category;
+
+            option.textContent =
+                category;
+
+            categoryFilter.appendChild(
+                option
+            );
+        }
+    );
+}
+
+function buildTagFilter() {
+
+    tagFilter.innerHTML =
+        `
+        <option value="">
+            All Tags
+        </option>
+        `;
+
+    const tags =
+        [...new Set(
+            recipes.flatMap(
+                recipe =>
+                    recipe.tags || []
+            )
+        )]
+        .sort();
+
+    tags.forEach(
+        tag => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                tag;
+
+            option.textContent =
+                tag;
+
+            tagFilter.appendChild(
+                option
+            );
+        }
+    );
 }
 
 function buildRecipeList(
@@ -126,24 +266,58 @@ function buildRecipeList(
     recipeList.innerHTML =
         "";
 
-    const filteredRecipes =
-        recipes.filter(
-            recipe => {
+const filteredRecipes =
+    recipes.filter(
+        recipe => {
 
-                if (
-                    searchText === ""
-                ) {
-                    return true;
-                }
+            const search =
+                searchText
+                    .toLowerCase();
 
-                return recipe.title
+            const categoryMatch =
+                categoryFilter.value === ""
+                ||
+                recipe.category ===
+                categoryFilter.value;
+
+            const tagMatch =
+                tagFilter.value === ""
+                ||
+                (recipe.tags || [])
+                    .includes(
+                        tagFilter.value
+                    );
+
+            const favoriteMatch =
+                !favoritesOnly.checked
+                ||
+                recipe.isFavorite;
+
+            if (
+                !categoryMatch
+                ||
+                !tagMatch
+                ||
+                !favoriteMatch
+            ) {
+                return false;
+            }
+
+            if (
+                search === ""
+            ) {
+                return true;
+            }
+
+            return (
+                recipe.title
                     ?.toLowerCase()
                     .includes(
-                        searchText
-                            .toLowerCase()
-                    );
-            }
-        );
+                        search
+                    )
+            );
+        }
+    );
 
     recipeCount.textContent =
         `Recipes: ${filteredRecipes.length}`;
@@ -158,25 +332,27 @@ function buildRecipeList(
 
             button.className =
                 "recipeButton";
+const tags =
+    (recipe.tags || [])
+        .join(", ");
 
-            button.innerHTML =
-                `
-                <div class="recipeTitle">
-                    ${recipe.title}
-                </div>
+button.innerHTML =
+    `
+    <div class="recipeTitle">
+        ${recipe.title}
+    </div>
 
-                <div class="recipeMeta">
-                    ${recipe.category || ""}
-                </div>
-                `;
+    <div class="recipeMeta">
+        ${recipe.category || ""}
+    </div>
 
-          button.addEventListener(
+    <div class="recipeTags">
+        ${tags}
+    </div>
+    `;
+           button.addEventListener(
     "click",
     () => {
-
-        alert(
-            recipe.title
-        );
 
         showRecipe(
             recipe

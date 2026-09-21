@@ -11,7 +11,7 @@
     content="width=device-width, initial-scale=1">
 
 <title>
-    Recipe Viewer v3
+    Recipe Viewer 
 </title>
 
 <link
@@ -25,7 +25,7 @@
 <div id="listView">
 
     <h1>
-        Recipe Viewer
+        Recipe Viewer v4
     </h1>
 
     <input
@@ -37,7 +37,31 @@
         type="search"
         id="searchBar"
         placeholder="Search Recipes">
+<select id="categoryFilter">
+    <option value="">
+        All Categories
+    </option>
+</select>
 
+<select id="tagFilter">
+    <option value="">
+        All Tags
+    </option>
+</select>
+
+<label>
+
+    <input
+        type="checkbox"
+        id="favoritesOnly">
+
+    Favorites Only
+
+</label>
+
+<button id="clearFilters">
+    Clear Filters
+</button>
     <div id="recipeCount">
         Recipes: 0
     </div>
