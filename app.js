@@ -58,8 +58,75 @@ const clearFilters =
     document.getElementById(
         "clearFilters"
     );
-let recipes = [];
+    const cookModeButton =
+    document.getElementById(
+        "cookModeButton"
+    );
 
+const cookModeView =
+    document.getElementById(
+        "cookModeView"
+    );
+
+const exitCookMode =
+    document.getElementById(
+        "exitCookMode"
+    );
+
+const cookRecipeTitle =
+    document.getElementById(
+        "cookRecipeTitle"
+    );
+
+const cookIngredients =
+    document.getElementById(
+        "cookIngredients"
+    );
+
+const cookSteps =
+    document.getElementById(
+        "cookSteps"
+    );
+
+const ingredientsTab =
+    document.getElementById(
+        "ingredientsTab"
+    );
+
+const stepsTab =
+    document.getElementById(
+        "stepsTab"
+    );
+
+const stepCounter =
+    document.getElementById(
+        "stepCounter"
+    );
+
+const stepText =
+    document.getElementById(
+        "stepText"
+    );
+
+const previousStep =
+    document.getElementById(
+        "previousStep"
+    );
+
+const nextStep =
+    document.getElementById(
+        "nextStep"
+    );
+
+const clearChecks =
+    document.getElementById(
+        "clearChecks"
+    );
+let recipes = [];
+let currentRecipe = null;
+let currentStep = 0;
+let checkedIngredients =
+    new Set();
 loadSavedLibrary();
 
 filePicker.addEventListener(
@@ -370,6 +437,8 @@ recipeList.appendChild(
 function showRecipe(
     recipe
 ) {
+currentRecipe =
+    recipe;
 
     listView.style.display =
         "none";
@@ -462,3 +531,203 @@ function showRecipe(
     recipeDetail.innerHTML =
         html;
 }
+cookModeButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !currentRecipe
+        ) {
+            return;
+        }
+
+        openCookMode(
+            currentRecipe
+        );
+    }
+);
+
+exitCookMode.addEventListener(
+    "click",
+    () => {
+
+        cookModeView.style.display =
+            "none";
+
+        detailView.style.display =
+            "block";
+    }
+);
+
+function openCookMode(
+    recipe
+) {
+
+    detailView.style.display =
+        "none";
+
+    cookModeView.style.display =
+        "block";
+
+    cookRecipeTitle.textContent =
+        recipe.title;
+
+    currentStep = 0;
+
+    renderIngredients(
+        recipe
+    );
+
+    renderStep(
+        recipe
+    );
+}
+
+function renderIngredients(
+    recipe
+) {
+
+    cookIngredients.innerHTML =
+        "";
+
+    (recipe.ingredients || [])
+        .filter(
+            ingredient =>
+                ingredient.type !==
+                "section"
+        )
+        .forEach(
+            ingredient => {
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+                div.className =
+                    "ingredientCheck";
+
+                div.textContent =
+                    `${ingredient.amount || ""} ${ingredient.name || ""}`;
+
+                div.addEventListener(
+                    "click",
+                    () => {
+
+                        div.classList.toggle(
+                            "checkedIngredient"
+                        );
+                    }
+                );
+
+                cookIngredients.appendChild(
+                    div
+                );
+            }
+        );
+}
+
+function renderStep(
+    recipe
+) {
+
+    const steps =
+        recipe.instructions || [];
+
+    if (
+        steps.length === 0
+    ) {
+        return;
+    }
+
+    stepCounter.textContent =
+        `Step ${currentStep + 1} of ${steps.length}`;
+
+    stepText.textContent =
+        steps[currentStep].text;
+}
+
+ingredientsTab.addEventListener(
+    "click",
+    () => {
+
+        cookIngredients.style.display =
+            "block";
+
+        clearChecks.style.display =
+            "block";
+
+        cookSteps.style.display =
+            "none";
+    }
+);
+
+stepsTab.addEventListener(
+    "click",
+    () => {
+
+        cookIngredients.style.display =
+            "none";
+
+        clearChecks.style.display =
+            "none";
+
+        cookSteps.style.display =
+            "block";
+    }
+);
+
+nextStep.addEventListener(
+    "click",
+    () => {
+
+        const steps =
+            currentRecipe.instructions || [];
+
+        if (
+            currentStep <
+            steps.length - 1
+        ) {
+
+            currentStep++;
+
+            renderStep(
+                currentRecipe
+            );
+        }
+    }
+);
+
+previousStep.addEventListener(
+    "click",
+    () => {
+
+        if (
+            currentStep > 0
+        ) {
+
+            currentStep--;
+
+            renderStep(
+                currentRecipe
+            );
+        }
+    }
+);
+
+clearChecks.addEventListener(
+    "click",
+    () => {
+
+        document
+            .querySelectorAll(
+                ".ingredientCheck"
+            )
+            .forEach(
+                element =>
+                    element.classList.remove(
+                        "checkedIngredient"
+                    )
+            );
+    }
+);

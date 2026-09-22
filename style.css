@@ -106,3 +106,65 @@ label {
     font-size: 13px;
     color: #6b7280;
 }
+.detailHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+#cookModeButton,
+#exitCookMode {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #f97316;
+    color: white;
+}
+
+.cookTabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.cookTabs button {
+    flex: 1;
+}
+
+.ingredientCheck {
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background: #1f2937;
+}
+
+.checkedIngredient {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+#stepCounter {
+    margin-bottom: 16px;
+    color: #9ca3af;
+    font-size: 20px;
+}
+
+#stepText {
+    min-height: 50vh;
+    font-size: clamp(
+        32px,
+        6vw,
+        64px
+    );
+    line-height: 1.3;
+}
+
+.stepButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.stepButtons button {
+    flex: 1;
+}

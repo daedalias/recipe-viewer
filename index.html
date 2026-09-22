@@ -75,15 +75,81 @@
     id="detailView"
     style="display:none;">
 
+ <div class="detailHeader">
+
     <button id="backButton">
         ← Back
     </button>
+
+    <button id="cookModeButton">
+        🍳 Cook
+    </button>
+
+</div>
 
     <div id="recipeDetail">
     </div>
 
 </div>
+<div
+    id="cookModeView"
+    style="display:none;">
 
+    <div class="detailHeader">
+
+        <button id="exitCookMode">
+            Done
+        </button>
+
+    </div>
+
+    <h1 id="cookRecipeTitle">
+    </h1>
+
+    <div class="cookTabs">
+
+        <button id="ingredientsTab">
+            Ingredients
+        </button>
+
+        <button id="stepsTab">
+            Steps
+        </button>
+
+    </div>
+
+    <div id="cookIngredients">
+    </div>
+
+    <button id="clearChecks">
+        Clear Checks
+    </button>
+
+    <div
+        id="cookSteps"
+        style="display:none;">
+
+        <div id="stepCounter">
+        </div>
+
+        <div id="stepText">
+        </div>
+
+        <div class="stepButtons">
+
+            <button id="previousStep">
+                Previous
+            </button>
+
+            <button id="nextStep">
+                Next
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <script src="app.js"></script>
 
 </body>
