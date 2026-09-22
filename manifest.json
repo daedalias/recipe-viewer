@@ -1,15 +1,14 @@
 {
-    "name": "Recipe Viewer",
-    "short_name": "Recipes",
-    "start_url": "./",
-    "display": "standalone",
-    "background_color": "#111827",
-    "theme_color": "#111827",
-    "icons": [
-        {
-            "src": "RecipeIndexIcon.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "name": "Recipe Viewer",
+  "short_name": "Recipes",
+  "start_url": "/recipe-viewer/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "/recipe-viewer/RecipeIndexIcon.png",
+      "type": "image/png"
+    }
+  ]
 }
