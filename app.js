@@ -676,8 +676,8 @@ function renderStep(
 
     }
 
-    stepText.style.fontSize =
-        `${fontSize}px`;
+stepText.style.fontSize =
+    "24px";
 }
 
 stepsTab.addEventListener(

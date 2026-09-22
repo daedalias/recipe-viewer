@@ -129,10 +129,10 @@ font-size: 16px;
     gap: 8px;
     margin-bottom: 16px;
 }
-.cookTabs button {
+.stepButtons button {
     flex: 1;
-    height: 32px;
-    font-size: 15px;
+    height: 20px;
+    background: red;
 }
 
 .stepButtons button {
