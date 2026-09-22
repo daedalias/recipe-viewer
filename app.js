@@ -655,29 +655,34 @@ function renderStep(
     let fontSize =
         24;
 
-    if (length < 50) {
+if (length < 30) {
 
-        fontSize = 56;
+    fontSize = 56;
 
-    }
-    else if (length < 100) {
+}
+else if (length < 60) {
 
-        fontSize = 48;
+    fontSize = 44;
 
-    }
-    else if (length < 150) {
+}
+else if (length < 100) {
 
-        fontSize = 40;
+    fontSize = 36;
 
-    }
-    else if (length < 250) {
+}
+else if (length < 150) {
 
-        fontSize = 32;
+    fontSize = 30;
 
-    }
+}
+else {
+
+    fontSize = 24;
+
+}
 
 stepText.style.fontSize =
-    "24px";
+    `${fontSize}px`;
 }
 
 stepsTab.addEventListener(

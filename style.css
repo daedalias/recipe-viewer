@@ -129,16 +129,16 @@ font-size: 16px;
     gap: 8px;
     margin-bottom: 16px;
 }
-.stepButtons button {
+.cookTabs button {
     flex: 1;
-    height: 20px;
-    background: red;
+    height: 28px;
+    font-size: 14px;
 }
 
 .stepButtons button {
     flex: 1;
-    height: 36px;
-    font-size: 15px;
+    height: 32px;
+    font-size: 14px;
 }
 .ingredientCheck {
     padding: 16px;
@@ -159,7 +159,7 @@ font-size: 16px;
 }
 #stepText {
     flex: 1;
-    overflow: hidden;
+    overflow-y: auto;
     line-height: 1.15;
     word-break: break-word;
 }
@@ -178,4 +178,5 @@ font-size: 16px;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 230px);
+    overflow: hidden;
 }
