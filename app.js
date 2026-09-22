@@ -649,43 +649,36 @@ function renderStep(
     stepText.textContent =
         step;
 
+    const length =
+        step.length;
+
     let fontSize =
-        56;
+        24;
+
+    if (length < 50) {
+
+        fontSize = 56;
+
+    }
+    else if (length < 100) {
+
+        fontSize = 48;
+
+    }
+    else if (length < 150) {
+
+        fontSize = 40;
+
+    }
+    else if (length < 250) {
+
+        fontSize = 32;
+
+    }
 
     stepText.style.fontSize =
         `${fontSize}px`;
-
-    while (
-        fontSize > 24
-    ) {
-
-        if (
-            stepText.scrollHeight <=
-            stepText.clientHeight
-        ) {
-            break;
-        }
-
-        fontSize--;
-
-        stepText.style.fontSize =
-            `${fontSize}px`;
-    }
 }
-ingredientsTab.addEventListener(
-    "click",
-    () => {
-
-        cookIngredients.style.display =
-            "block";
-
-        clearChecks.style.display =
-            "block";
-
-        cookSteps.style.display =
-            "none";
-    }
-);
 
 stepsTab.addEventListener(
     "click",

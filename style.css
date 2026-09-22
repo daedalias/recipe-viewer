@@ -131,9 +131,15 @@ font-size: 16px;
 }
 .cookTabs button {
     flex: 1;
-    height: 40px;
+    height: 32px;
+    font-size: 15px;
 }
 
+.stepButtons button {
+    flex: 1;
+    height: 36px;
+    font-size: 15px;
+}
 .ingredientCheck {
     padding: 16px;
     margin-bottom: 8px;
@@ -162,11 +168,6 @@ font-size: 16px;
     gap: 12px;
     margin-top: auto;
     padding-top: 16px;
-}
-.stepButtons button {
-    flex: 1;
-    height: 44px;
-    font-size: 16px;
 }
 #cookModeView {
     min-height: 100vh;
