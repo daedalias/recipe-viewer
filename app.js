@@ -646,29 +646,32 @@ function renderStep(
     stepCounter.textContent =
         `Step ${currentStep + 1} of ${steps.length}`;
 
-stepText.textContent =
-    step;
+    stepText.textContent =
+        step;
 
-let size =
-    64;
-
-stepText.style.fontSize =
-    `${size}px`;
-
-while (
-    size > 24 &&
-    stepText.scrollHeight >
-        stepText.clientHeight
-) {
-
-    size -= 2;
+    let fontSize =
+        56;
 
     stepText.style.fontSize =
-        `${size}px`;
-}
+        `${fontSize}px`;
 
-}
+    while (
+        fontSize > 24
+    ) {
 
+        if (
+            stepText.scrollHeight <=
+            stepText.clientHeight
+        ) {
+            break;
+        }
+
+        fontSize--;
+
+        stepText.style.fontSize =
+            `${fontSize}px`;
+    }
+}
 ingredientsTab.addEventListener(
     "click",
     () => {

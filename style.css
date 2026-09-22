@@ -66,10 +66,6 @@ input[type="search"] {
 }
 
 #backButton {
-    height: 56px;
-    padding: 0 20px;
-    border: none;
-    border-radius: 12px;
     background: #2563eb;
     color: white;
 }
@@ -112,13 +108,18 @@ label {
     gap: 12px;
     margin-bottom: 16px;
 }
-
+#backButton,
 #cookModeButton,
 #exitCookMode {
-    height: 56px;
-    padding: 0 20px;
+    height: 40px;
+    padding: 0 14px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+#cookModeButton,
+#exitCookMode {
+font-size: 16px;
     background: #f97316;
     color: white;
 }
@@ -128,9 +129,9 @@ label {
     gap: 8px;
     margin-bottom: 16px;
 }
-
 .cookTabs button {
     flex: 1;
+    height: 40px;
 }
 
 .ingredientCheck {
@@ -150,15 +151,12 @@ label {
     color: #9ca3af;
     font-size: 20px;
 }
-
 #stepText {
     flex: 1;
-    line-height: 1.25;
     overflow: hidden;
-    display: flex;
-    align-items: center;
+    line-height: 1.15;
+    word-break: break-word;
 }
-
 .stepButtons {
     display: flex;
     gap: 12px;
@@ -167,11 +165,16 @@ label {
 }
 .stepButtons button {
     flex: 1;
-    height: 56px;
-    font-size: 18px;
+    height: 44px;
+    font-size: 16px;
 }
 #cookModeView {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+#cookSteps {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 230px);
 }
