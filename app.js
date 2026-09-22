@@ -754,3 +754,17 @@ clearChecks.addEventListener(
             );
     }
 );
+ingredientsTab.addEventListener(
+    "click",
+    () => {
+
+        cookIngredients.style.display =
+            "block";
+
+        clearChecks.style.display =
+            "block";
+
+        cookSteps.style.display =
+            "none";
+    }
+);

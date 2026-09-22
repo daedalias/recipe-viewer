@@ -25,7 +25,7 @@
 <div id="listView">
 
     <h1>
-        Recipe Viewer v10
+        Recipe Viewer v11
     </h1>
 
     <input
@@ -95,28 +95,24 @@
     id="cookModeView"
     style="display:none;">
 
-    <div class="detailHeader">
+<div class="detailHeader">
 
-        <button id="exitCookMode">
-            Done
-        </button>
+    <button id="exitCookMode">
+        Done
+    </button>
 
-    </div>
+    <button id="ingredientsTab">
+        Ingredients
+    </button>
+
+    <button id="stepsTab">
+        Steps
+    </button>
+
+</div>
 
     <h1 id="cookRecipeTitle">
     </h1>
-
-    <div class="cookTabs">
-
-        <button id="ingredientsTab">
-            Ingredients
-        </button>
-
-        <button id="stepsTab">
-            Steps
-        </button>
-
-    </div>
 
     <div id="cookIngredients">
     </div>
@@ -125,17 +121,27 @@
         Clear Checks
     </button>
 
-    <div
-        id="cookSteps"
-        style="display:none;">
+  <div
+    id="cookSteps"
+    style="display:none;">
 
-        <div id="stepCounter">
-        </div>
+    <div class="stepButtons">
 
-        <div id="stepText">
-        </div>
+        <button id="previousStep">
+            Previous
+        </button>
 
-        <div class="stepButtons">
+        <button id="nextStep">
+            Next
+        </button>
+
+    </div>
+
+    <div id="stepCounter">
+    </div>
+
+    <div id="stepText">
+    </div>
 
             <button id="previousStep">
                 Previous

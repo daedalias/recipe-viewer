@@ -158,25 +158,12 @@ font-size: 16px;
     font-size: 20px;
 }
 #stepText {
-    flex: 1;
-    overflow-y: auto;
-    line-height: 1.15;
-    word-break: break-word;
+    margin-top: 16px;
+    line-height: 1.4;
 }
+
 .stepButtons {
     display: flex;
     gap: 12px;
-    margin-top: auto;
-    padding-top: 16px;
-}
-#cookModeView {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-#cookSteps {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 230px);
-    overflow: hidden;
+    margin-bottom: 16px;
 }
