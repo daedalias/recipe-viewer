@@ -190,8 +190,8 @@ font-size: 16px;
 .cookModeHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 .cookToggle {
     display: flex;
+    margin-left: auto;
 }
