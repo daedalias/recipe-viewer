@@ -697,6 +697,14 @@ stepsTab.addEventListener(
 
         cookSteps.style.display =
             "block";
+
+        stepsTab.classList.add(
+            "tabActive"
+        );
+
+        ingredientsTab.classList.remove(
+            "tabActive"
+        );
     }
 );
 
@@ -766,5 +774,13 @@ ingredientsTab.addEventListener(
 
         cookSteps.style.display =
             "none";
+
+        ingredientsTab.classList.add(
+            "tabActive"
+        );
+
+        stepsTab.classList.remove(
+            "tabActive"
+        );
     }
 );
