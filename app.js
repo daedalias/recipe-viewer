@@ -640,11 +640,33 @@ function renderStep(
         return;
     }
 
+    const step =
+        steps[currentStep].text;
+
     stepCounter.textContent =
         `Step ${currentStep + 1} of ${steps.length}`;
 
-    stepText.textContent =
-        steps[currentStep].text;
+stepText.textContent =
+    step;
+
+let size =
+    64;
+
+stepText.style.fontSize =
+    `${size}px`;
+
+while (
+    size > 24 &&
+    stepText.scrollHeight >
+        stepText.clientHeight
+) {
+
+    size -= 2;
+
+    stepText.style.fontSize =
+        `${size}px`;
+}
+
 }
 
 ingredientsTab.addEventListener(
